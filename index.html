@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Insurance Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> Health Insurance Prediction</h1>
+            <p class="subtitle">Enter your details to check eligibility and estimated cost</p>
+        </header>
+
+        <div class="form-container">
+            <form action="/" method="post">
+                <div class="form-group">
+                    <label><i class="fas fa-user-clock"></i> Age:</label>
+                    <input type="number" name="age" min="1" max="120" required placeholder="Enter your age">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-weight"></i> BMI:</label>
+                    <input type="number" name="bmi" step="0.1" min="10" max="50" required placeholder="Enter your BMI">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-baby"></i> No. of Children:</label>
+                    <input type="number" name="children" min="0" max="10" required placeholder="Number of children">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-smoking"></i> Smoker:</label>
+                    <select name="smoker" required>
+                        <option value="" disabled selected>Select option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group-special">
+                    <label><i class="fas fa-map-marker-alt"></i> Choose Region:</label>
+                    <select name="region">
+                        <option value="" selected>Select Region (Optional)</option>
+                        {% for reg in regions %}
+                        <option value="{{ reg }}">{{ reg }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group-special">
+                    <label><i class="fas fa-dollar-sign"></i> OR Enter Income:</label>
+                    <input type="number" name="income" placeholder="Annual income (Optional)">
+                </div>
+
+                <div class="form-note">
+                    <p>* Please provide either Region OR Income (not both)</p>
+                </div>
+
+                <button type="submit" class="btn-predict">
+                    <i class="fas fa-calculator"></i> Predict Insurance
+                </button>
+            </form>
+        </div>
+
+        {% if insurance_decision %}
+        <div class="result-container">
+            <h2><i class="fas fa-clipboard-check"></i> Prediction Results</h2>
+            
+            <div class="result-card {% if 'Eligible' in insurance_decision %}eligible{% else %}not-eligible{% endif %}">
+                <div class="result-icon">
+                    {% if 'Eligible' in insurance_decision %}
+                    <i class="fas fa-check-circle"></i>
+                    {% else %}
+                    <i class="fas fa-times-circle"></i>
+                    {% endif %}
+                </div>
+                <div class="result-details">
+                    <h3>Insurance Decision:</h3>
+                    <p class="decision">{{ insurance_decision }}</p>
+                    
+                    {% if 'Eligible' in insurance_decision %}
+                    <h3>Predicted Cost Level:</h3>
+                    <p class="cost {% if cost_prediction == 'High Cost' %}high-cost{% else %}low-cost{% endif %}">
+                        {{ cost_prediction }}
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="insights-container">
+            <h2><i class="fas fa-chart-bar"></i> Insights & Visualizations</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'correlations')">Correlations</button>
+                <button class="tab-btn" onclick="openTab(event, 'bmi-charges')">BMI & Charges</button>
+                <button class="tab-btn" onclick="openTab(event, 'age-analysis')">Age Analysis</button>
+                <button class="tab-btn" onclick="openTab(event, 'smoker-analysis')">Smoker Analysis</button>
+            </div>
+            
+            <div id="correlations" class="tab-content active">
+                <div class="insight-card">
+                    <h3>Correlation Between Factors</h3>
+                    <p>This heatmap shows how different factors relate to insurance charges.</p>
+                    <div class="visual-container">
+                        <img src="{{ corr_matrix }}" alt="Correlation Matrix">
+                    </div>
+                    <div class="insight-notes">
+                        <p><i class="fas fa-info-circle"></i> Darker red indicates stronger positive correlation</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="bmi-charges" class="tab-content">
+                <div class="insight-card">
+                    <h3>BMI vs Insurance Charges</h3>
+                    <p>This scatter plot shows how BMI affects insurance charges, with smoker status highlighted.</p>
+                    <div class="visual-container">
+                        <img src="{{ scatter_plot }}" alt="BMI vs Insurance Charges">
+                    </div>
+                    <div class="insight-notes">
+                        <p><i class="fas fa-info-circle"></i> Red points represent smokers, blue represent non-smokers</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="age-analysis" class="tab-content">
+                <div class="insight-card">
+                    <h3>Insurance Charges by Age Group</h3>
+                    <p>This chart shows how insurance charges vary across different age groups.</p>
+                    <div class="visual-container">
+                        <img src="{{ age_chart }}" alt="Age Group Analysis">
+                    </div>
+                    <div class="insight-notes">
+                        <p><i class="fas fa-info-circle"></i> Insurance charges typically increase with age</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="smoker-analysis" class="tab-content">
+                <div class="insight-card">
+                    <h3>Smoker vs Non-Smoker Charges</h3>
+                    <p>This box plot compares insurance charges between smokers and non-smokers.</p>
+                    <div class="visual-container">
+                        <img src="{{ smoker_chart }}" alt="Smoker Analysis">
+                    </div>
+                    <div class="insight-notes">
+                        <p><i class="fas fa-info-circle"></i> Smokers typically pay significantly higher premiums</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
+        <footer>
+            <p>&copy; 2025 Health Insurance Predictor | Powered by ML</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabButtons;
+            
+            // Hide all tab content
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].classList.remove("active");
+            }
+            
+            // Remove "active" class from all tab buttons
+            tabButtons = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+            
+            // Show the specific tab content and add "active" class to the button
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
