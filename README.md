@@ -69,16 +69,16 @@ A **Flask-based machine learning web application** that predicts **health insura
 
 ## 💻 How to Run Locally
 
-### 1️⃣ Clone the Repository
+###  1️⃣ Clone the Repository
 git clone https://github.com/yourusername/health-insurance-predictor.git
 cd health-insurance-predictor
-### 2️⃣ Install Dependencies
+###  2️⃣ Install Dependencies
 pip install flask pandas numpy scikit-learn matplotlib seaborn joblib
-### 3️⃣ Preprocess Data
+###  3️⃣ Preprocess Data
 python preprocess.py
-### 4️⃣ Train Model
+###  4️⃣ Train Model
 python train.py
-### 5️⃣ Run the Web App
+###  5️⃣ Run the Web App
 python app.py
 
 #### 🎯 Use Cases
