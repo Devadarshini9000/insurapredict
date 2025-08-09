@@ -43,23 +43,23 @@ A **Flask-based machine learning web application** that predicts **health insura
 
 ## 🧪 How It Works
 
-1. **Data Preprocessing (`preprocess.py`)**
+1. Data Preprocessing (`preprocess.py`)
    - Cleans missing values
    - Encodes categorical features (`sex`, `smoker`, `region`)
    - Scales numerical features (`age`, `bmi`, `children`)
    - Saves processed dataset as `cleaned_insurance.csv`
 
-2. **Exploratory Data Analysis (`eda.py`)**
+2. Exploratory Data Analysis (`eda.py`)
    - Generates feature correlations
    - Visualizes relationships between BMI, age, smoking, and charges
 
-3. **Model Training (`train.py`)**
+3. Model Training (`train.py`)
    - Applies PCA for dimensionality reduction
    - Trains multiple models (Random Forest, SVM, Logistic Regression, etc.)
    - Selects the best model based on F1 score
    - Saves `best_model.pkl`, `scaler.pkl`, `pca.pkl`
 
-4. **Prediction & UI (`app.py`)**
+4. Prediction & UI (`app.py`)
    - Accepts user input via web form
    - Predicts eligibility and cost category
    - Displays risk factors or rejection reasons
@@ -69,7 +69,7 @@ A **Flask-based machine learning web application** that predicts **health insura
 
 ## 💻 How to Run Locally
 
-###  1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 git clone https://github.com/yourusername/health-insurance-predictor.git
 cd health-insurance-predictor
 ###  2️⃣ Install Dependencies
@@ -81,7 +81,7 @@ python train.py
 ###  5️⃣ Run the Web App
 python app.py
 
-#### 🎯 Use Cases
+## 🎯 Use Cases
 - Insurance companies estimating eligibility and premium ranges
 - Health data analysis for trends and risk factors
 - ML portfolio project for predictive analytics
