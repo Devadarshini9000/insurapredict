@@ -20,15 +20,15 @@ A **Flask-based machine learning web application** that predicts **health insura
 
 ## 📁 Project Structure
 
--├── app.py # Flask application
--├── preprocess.py # Data preprocessing script
--├── train.py # Model training script
--├── eda.py # Exploratory Data Analysis
--├── best_model.pkl # Trained ML model
--├── scaler.pkl # Scaler object for numerical features
--├── pca.pkl # PCA object for dimensionality reduction
--├── static/ # Generated visualization images
--└── templates/index.html # Frontend HTML template
+- ├── app.py # Flask application
+- ├── preprocess.py # Data preprocessing script
+- ├── train.py # Model training script
+- ├── eda.py # Exploratory Data Analysis
+- ├── best_model.pkl # Trained ML model
+- ├── scaler.pkl # Scaler object for numerical features
+- ├── pca.pkl # PCA object for dimensionality reduction
+- ├── static/ # Generated visualization images
+- └── templates/index.html # Frontend HTML template
 
 ---
 
@@ -82,9 +82,9 @@ python train.py
 python app.py
 
 ### 🎯 Use Cases
--🏥 Insurance companies estimating eligibility and premium ranges
--📊 Health data analysis for trends and risk factors
--🎓 ML portfolio project for predictive analytics
+- Insurance companies estimating eligibility and premium ranges
+- Health data analysis for trends and risk factors
+- ML portfolio project for predictive analytics
 
 ## 👩‍💻 Author
 **Devadarshini P**  
@@ -92,3 +92,7 @@ python app.py
 [💻 GitHub](https://github.com/Devadarshini9000)
 
 “Predict smart, insure right.” – Health Insurance Predictor
+<img width="1280" height="660" alt="image" src="https://github.com/user-attachments/assets/eebf393f-1160-43e9-b05c-083a108c6661" />
+<img width="1280" height="660" alt="image" src="https://github.com/user-attachments/assets/c9be6abf-8376-4923-996b-d5b788edb62f" />
+
+
