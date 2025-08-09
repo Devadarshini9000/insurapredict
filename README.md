@@ -92,6 +92,7 @@ python app.py
 [💻 GitHub](https://github.com/Devadarshini9000)
 
 “Predict smart, insure right.” – Health Insurance Predictor
+
 <img width="1280" height="660" alt="image" src="https://github.com/user-attachments/assets/eebf393f-1160-43e9-b05c-083a108c6661" />
 <img width="1280" height="660" alt="image" src="https://github.com/user-attachments/assets/c9be6abf-8376-4923-996b-d5b788edb62f" />
 
