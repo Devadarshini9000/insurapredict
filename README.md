@@ -20,15 +20,15 @@ A **Flask-based machine learning web application** that predicts **health insura
 
 ## 📁 Project Structure
 
-├── app.py # Flask application
-├── preprocess.py # Data preprocessing script
-├── train.py # Model training script
-├── eda.py # Exploratory Data Analysis
-├── best_model.pkl # Trained ML model
-├── scaler.pkl # Scaler object for numerical features
-├── pca.pkl # PCA object for dimensionality reduction
-├── static/ # Generated visualization images
-└── templates/index.html # Frontend HTML template
+-├── app.py # Flask application
+-├── preprocess.py # Data preprocessing script
+-├── train.py # Model training script
+-├── eda.py # Exploratory Data Analysis
+-├── best_model.pkl # Trained ML model
+-├── scaler.pkl # Scaler object for numerical features
+-├── pca.pkl # PCA object for dimensionality reduction
+-├── static/ # Generated visualization images
+-└── templates/index.html # Frontend HTML template
 
 ---
 
@@ -72,16 +72,16 @@ A **Flask-based machine learning web application** that predicts **health insura
 ### 1️⃣ Clone the Repository
 git clone https://github.com/yourusername/health-insurance-predictor.git
 cd health-insurance-predictor
-2️⃣ Install Dependencies
+## 2️⃣ Install Dependencies
 pip install flask pandas numpy scikit-learn matplotlib seaborn joblib
-3️⃣ Preprocess Data
+## 3️⃣ Preprocess Data
 python preprocess.py
-4️⃣ Train Model
+## 4️⃣ Train Model
 python train.py
-5️⃣ Run the Web App
+## 5️⃣ Run the Web App
 python app.py
 
-🎯 Use Cases
+### 🎯 Use Cases
 -🏥 Insurance companies estimating eligibility and premium ranges
 -📊 Health data analysis for trends and risk factors
 -🎓 ML portfolio project for predictive analytics
