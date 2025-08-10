@@ -1,4 +1,4 @@
-# 🏥 Insurapredict - Health Insurance Prediction Web App
+# 🏥 insurapredict - Health Insurance Prediction Web App
 
 A **Flask-based machine learning web application** that predicts **health insurance eligibility** and **cost category** based on user inputs like age, BMI, number of children, smoker status, and either region or income. The app also provides **data visualizations** for deeper insights into health insurance datasets.
 
